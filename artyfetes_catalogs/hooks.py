@@ -98,7 +98,7 @@ fixtures = [
 # ------------
 
 # before_install = "artyfetes_catalogs.install.before_install"
-after_install = "artyfetes_catalogs.utils.ensure_root_nodes"
+# after_install = "artyfetes_catalogs.utils.ensure_root_nodes"
 
 # Uninstallation
 # ------------
