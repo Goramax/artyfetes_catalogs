@@ -28,6 +28,12 @@ class Catalogs(NestedSet):
 	# end: auto-generated types
 	pass
 
+	def validate(self):
+		if self.type == "Catalogue":
+			self.is_group = 1
+		else:
+			self.is_group = 0
+
 @frappe.whitelist()
 def get_active_tree_nodes(doctype, parent=None, is_root=False, **filters):
     """

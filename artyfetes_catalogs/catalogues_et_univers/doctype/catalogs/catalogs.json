@@ -8,10 +8,11 @@
  "field_order": [
   "section_break_j1co",
   "title",
+  "type",
   "isactive",
   "isvisible",
   "parent_catalogs",
-  "custom_html",
+  "catalog_universes",
   "products",
   "options_avanc\u00e9es_section",
   "old_parent",
@@ -48,11 +49,13 @@
    "no_copy": 1
   },
   {
+   "depends_on": "eval:doc.type==\"Univers\";",
    "fieldname": "parent_catalogs",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
-   "label": "Niveau",
-   "link_filters": "[[\"Catalogs\",\"is_group\",\"=\",1]]",
+   "label": "Catalogue de l'univers",
+   "link_filters": "[[\"Catalogs\",\"type\",\"=\",\"Catalogue\"]]",
+   "mandatory_depends_on": "eval:doc.type==\"Univers\";",
    "options": "Catalogs"
   },
   {
@@ -85,29 +88,39 @@
    "options": "Catalogs"
   },
   {
-   "depends_on": "eval:doc.parent_catalogs==\"Catalogue\";",
-   "fieldname": "custom_html",
-   "fieldtype": "HTML Editor",
-   "label": "\u00c9diteur HTML"
-  },
-  {
    "collapsible": 1,
    "fieldname": "options_avanc\u00e9es_section",
    "fieldtype": "Section Break",
    "label": "Options avanc\u00e9es"
   },
   {
-   "depends_on": "eval:doc.parent_catalogs==\"Univers\";",
+   "depends_on": "eval:doc.type==\"Univers\";",
    "fieldname": "products",
    "fieldtype": "Table",
    "label": "Produits li\u00e9s",
    "options": "Linked Articles"
+  },
+  {
+   "depends_on": "eval:doc.type==\"Catalogue\";",
+   "fieldname": "catalog_universes",
+   "fieldtype": "HTML",
+   "label": "Liste des univers du catalogue",
+   "options": "<ul id=\"catalog_universes_list\">\n</ul>",
+   "read_only": 1
+  },
+  {
+   "default": "Catalogue",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Catalogue\nUnivers",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-01-24 11:22:29.740273",
+ "modified": "2025-01-24 19:03:31.084837",
  "modified_by": "Administrator",
  "module": "Catalogues et Univers",
  "name": "Catalogs",
@@ -124,6 +137,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
    "share": 1,
    "write": 1
   }

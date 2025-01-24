@@ -5,10 +5,22 @@ app_description = "Adds new catalogs and univers section to display on website"
 app_email = "maximemalherbe5@gmail.com"
 app_license = "mit"
 
+
+doctype_js = {
+    "Item": "public/js/item.js"
+}
+
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["erpnext"]
+
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [["dt", "=", "Item"]]  # Filtre pour exporter seulement les champs de Item
+    }
+]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
