@@ -1,134 +1,134 @@
 {
-    "actions": [],
-    "allow_rename": 1,
-    "autoname": "field:title",
-    "creation": "2025-01-20 21:54:48.705260",
-    "doctype": "DocType",
-    "engine": "InnoDB",
-    "field_order": [
-     "section_break_j1co",
-     "title",
-     "isactive",
-     "isvisible",
-     "parent_catalogs",
-     "custom_html",
-     "products",
-     "options_avanc\u00e9es_section",
-     "old_parent",
-     "lft",
-     "rgt",
-     "is_group"
-    ],
-    "fields": [
-     {
-      "fieldname": "section_break_j1co",
-      "fieldtype": "Section Break"
-     },
-     {
-      "fieldname": "title",
-      "fieldtype": "Data",
-      "in_list_view": 1,
-      "label": "Titre",
-      "no_copy": 1,
-      "reqd": 1,
-      "unique": 1
-     },
-     {
-      "default": "0",
-      "fieldname": "isactive",
-      "fieldtype": "Check",
-      "label": "Actif",
-      "no_copy": 1
-     },
-     {
-      "default": "0",
-      "fieldname": "isvisible",
-      "fieldtype": "Check",
-      "label": "Visible sur le site",
-      "no_copy": 1
-     },
-     {
-      "fieldname": "parent_catalogs",
-      "fieldtype": "Link",
-      "ignore_user_permissions": 1,
-      "label": "Niveau",
-      "link_filters": "[[\"Catalogs\",\"is_group\",\"=\",1]]",
-      "options": "Catalogs"
-     },
-     {
-      "fieldname": "lft",
-      "fieldtype": "Int",
-      "hidden": 1,
-      "label": "Left",
-      "no_copy": 1,
-      "read_only": 1
-     },
-     {
-      "fieldname": "rgt",
-      "fieldtype": "Int",
-      "hidden": 1,
-      "label": "Right",
-      "no_copy": 1,
-      "read_only": 1
-     },
-     {
-      "default": "0",
-      "fieldname": "is_group",
-      "fieldtype": "Check",
-      "label": "Is Group"
-     },
-     {
-      "fieldname": "old_parent",
-      "fieldtype": "Link",
-      "hidden": 1,
-      "label": "Old Parent",
-      "options": "Catalogs"
-     },
-     {
-      "depends_on": "eval:doc.parent_catalogs==\"Catalogue\";",
-      "fieldname": "custom_html",
-      "fieldtype": "HTML Editor",
-      "label": "\u00c9diteur HTML"
-     },
-     {
-      "collapsible": 1,
-      "fieldname": "options_avanc\u00e9es_section",
-      "fieldtype": "Section Break",
-      "label": "Options avanc\u00e9es"
-     },
-     {
-      "depends_on": "eval:doc.parent_catalogs==\"Univers\";",
-      "fieldname": "products",
-      "fieldtype": "Table",
-      "label": "Produits li\u00e9s",
-      "options": "Sales Invoice Item"
-     }
-    ],
-    "index_web_pages_for_search": 1,
-    "is_tree": 1,
-    "links": [],
-    "modified": "2025-01-21 18:05:43.981978",
-    "modified_by": "Administrator",
-    "module": "Catalogues et Univers",
-    "name": "Catalogs",
-    "naming_rule": "By fieldname",
-    "nsm_parent_field": "parent_catalogs",
-    "owner": "Administrator",
-    "permissions": [
-     {
-      "create": 1,
-      "delete": 1,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "System Manager",
-      "share": 1,
-      "write": 1
-     }
-    ],
-    "sort_field": "modified",
-    "sort_order": "DESC",
-    "states": []
-   }
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2025-01-20 21:54:48.705260",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_j1co",
+  "title",
+  "isactive",
+  "isvisible",
+  "parent_catalogs",
+  "custom_html",
+  "products",
+  "options_avanc\u00e9es_section",
+  "old_parent",
+  "lft",
+  "rgt",
+  "is_group"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_j1co",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Titre",
+   "no_copy": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "isactive",
+   "fieldtype": "Check",
+   "label": "Actif",
+   "no_copy": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "isvisible",
+   "fieldtype": "Check",
+   "label": "Visible sur le site",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "parent_catalogs",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Niveau",
+   "link_filters": "[[\"Catalogs\",\"is_group\",\"=\",1]]",
+   "options": "Catalogs"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Old Parent",
+   "options": "Catalogs"
+  },
+  {
+   "depends_on": "eval:doc.parent_catalogs==\"Catalogue\";",
+   "fieldname": "custom_html",
+   "fieldtype": "HTML Editor",
+   "label": "\u00c9diteur HTML"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "options_avanc\u00e9es_section",
+   "fieldtype": "Section Break",
+   "label": "Options avanc\u00e9es"
+  },
+  {
+   "depends_on": "eval:doc.parent_catalogs==\"Univers\";",
+   "fieldname": "products",
+   "fieldtype": "Table",
+   "label": "Produits li\u00e9s",
+   "options": "Linked Articles"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_tree": 1,
+ "links": [],
+ "modified": "2025-01-24 11:22:29.740273",
+ "modified_by": "Administrator",
+ "module": "Catalogues et Univers",
+ "name": "Catalogs",
+ "naming_rule": "By fieldname",
+ "nsm_parent_field": "parent_catalogs",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

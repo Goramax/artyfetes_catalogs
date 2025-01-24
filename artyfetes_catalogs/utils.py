@@ -23,6 +23,7 @@ def ensure_root_nodes(doc=None, method=None):
                     "name": root,
                     "title": root,
                     "is_group": 1, 
+                    "isactive": 1,
                     "parent_catalogs": None
                 }).insert()
 
