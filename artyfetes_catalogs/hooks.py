@@ -7,7 +7,8 @@ app_license = "mit"
 
 
 doctype_js = {
-    "Item": "public/js/item.js"
+    "Item": "public/js/item.js",
+    "Catalogs": "public/js/catalogs.js",
 }
 
 # Apps
@@ -152,13 +153,11 @@ fixtures = [
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Item": {
+        "validate": "artyfetes_catalogs.utils.item_disable_check"
+    }
+}
 
 # Scheduled Tasks
 # ---------------

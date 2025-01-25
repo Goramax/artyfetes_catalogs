@@ -34,15 +34,27 @@ class Catalogs(NestedSet):
 		else:
 			self.is_group = 0
 
-@frappe.whitelist()
-def get_active_tree_nodes(doctype, parent=None, is_root=False, **filters):
-    """
-    Renvoie les nœuds filtrés par `isactive`.
-    """
-    # Ajoute le filtre isactive
-    filters = {"isactive": 1}
 
-    # Récupère les enfants du parent donné
-    nodes = NestedSet.get_children(doctype, parent, filters=filters, is_root=is_root)
+@frappe.whitelist()
+def get_active_tree_nodes(doctype, parent=None, is_root=False):
+    """
+    Get active tree nodes.
+    """
+    filters = {"isactive": 1}
+    if parent: 
+        filters["parent_catalogs"] = parent
+    else:
+        filters["parent_catalogs"] = ""
+
+    nodes = frappe.get_all(
+        doctype,
+        filters=filters,
+        fields=["name", "title", "is_group", "parent_catalogs"],
+        order_by="name asc",
+    )
+
+    for node in nodes:
+        node["value"] = node["name"]
+        node["expandable"] = 1 if node["is_group"] else 0
 
     return nodes
