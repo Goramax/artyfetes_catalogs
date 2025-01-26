@@ -49,8 +49,8 @@ def get_active_tree_nodes(doctype, parent=None, is_root=False):
     nodes = frappe.get_all(
         doctype,
         filters=filters,
-        fields=["name", "title", "is_group", "parent_catalogs"],
-        order_by="name asc",
+        fields=["name", "title", "is_group", "parent_catalogs", "creation"],
+        order_by="creation DESC",
     )
 
     for node in nodes:

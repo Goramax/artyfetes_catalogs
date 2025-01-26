@@ -2,7 +2,7 @@ frappe.ui.form.on("Catalogs", {
 	refresh: function (frm) {
 		if (frm.doc.type === "Catalogue") {
 			frappe.call({
-				method: "artyfetes_catalogs.utils.get_catalog_universes",
+				method: "artyfetes_catalogs.api.get_catalog_universes",
 				args: {
 					catalog_name: frm.doc.name,
 				},

@@ -48,7 +48,11 @@
         "role": "Administrator",
         "share": 1,
         "write": 1
-      }
+      },
+      {
+        "read": 1,
+        "role": "Guest"
+       }
   ],
   "sort_field": "creation",
   "sort_order": "DESC",

@@ -1,7 +1,7 @@
 frappe.ui.form.on("Item", {
 	refresh: function (frm) {
 		frappe.call({
-			method: "artyfetes_catalogs.utils.get_active_catalogs",
+			method: "artyfetes_catalogs.api.get_active_catalogs",
 			args: {
 				is_active: 1,
 				linked_item: frm.doc.name,
