@@ -6,7 +6,12 @@ module.exports = {
     './node_modules/frappe-ui/src/components/**/*.{vue,js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        'primary': 'white',
+        'secondary': '#c2a186',
+      }
+    },
   },
   plugins: [],
 }
