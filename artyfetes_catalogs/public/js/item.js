@@ -32,7 +32,7 @@ frappe.ui.form.on("Item", {
 						});
 					}
 					else {
-						htmlContent = "Cet article n\'est dans aucun catalogue ou univers actif.";
+						htmlContent = __("This item is not in any active catalog or universe.");
 					}
 					custom_catalog_list.$wrapper.html(htmlContent);
 				}

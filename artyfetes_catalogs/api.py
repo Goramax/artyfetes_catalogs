@@ -112,7 +112,7 @@ def get_catalog_universes(catalog_name):
     
     universes = frappe.db.get_all(
         "Catalogs",
-        filters={"parent_catalogs": catalog_name, "type": "Univers"},
+        filters={"parent_catalogs": catalog_name, "type": "Universe"},
         fields=["title", "isvisible", "isactive"],
     )
     

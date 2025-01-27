@@ -1,6 +1,6 @@
 frappe.ui.form.on("Catalogs", {
 	refresh: function (frm) {
-		if (frm.doc.type === "Catalogue") {
+		if (frm.doc.type === "Catalog") {
 			frappe.call({
 				method: "artyfetes_catalogs.api.get_catalog_universes",
 				args: {
@@ -10,11 +10,11 @@ frappe.ui.form.on("Catalogs", {
 					if (r.message) {
                         let universes = r.message;
                         let custom_universes_list = frm.fields_dict.catalog_universes;
-                        let htmlContent = "<span style=\'font-weight:bold\'>Univers de ce catalogue:</span><ul>";
+                        let htmlContent = `<span style=\'font-weight:bold\'>${__("Catalog\'s Universes :")}</span><ul>`;
                         if (universes.length > 0) {
                             universes.forEach((universe) => {
                                 htmlContent += `
-                                <li>${universe.title} - ${universe.isactive ? "activé" : "désactivé"} - ${universe.isvisible ? "visible" : "caché"}</li>
+                                <li>${universe.title} - ${universe.isactive ? __("enabled") : __("disabled")} - ${universe.isvisible ? __("visible") : __("hidden")}</li>
                                 `;
                             });
                         }

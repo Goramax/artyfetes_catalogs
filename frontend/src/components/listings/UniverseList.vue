@@ -25,7 +25,7 @@ const parent_catalog = ref(props.catalogid)
 const universes = createListResource({
     doctype: 'Catalogs',
     fields: ['title', 'name'],
-    filters: [["isactive", "=", 1],["isvisible","=",1],["type","=","univers"], ["parent_catalogs","=",parent_catalog.value]],
+    filters: [["isactive", "=", 1],["isvisible","=",1],["type","=","Universe"], ["parent_catalogs","=",parent_catalog.value]],
     })
 universes.fetch()
 </script>

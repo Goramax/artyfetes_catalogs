@@ -17,7 +17,7 @@ import { createListResource } from 'frappe-ui'
 const catalogs = createListResource({
     doctype: 'Catalogs',
     fields: ['title', 'name'],
-    filters: [["isactive", "=", 1],["isvisible","=",1],["type","=","Catalogue"]],
+    filters: [["isactive", "=", 1],["isvisible","=",1],["type","=","Catalog"]],
     auto: true,
     })
 catalogs.fetch()

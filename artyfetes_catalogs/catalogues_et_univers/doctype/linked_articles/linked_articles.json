@@ -11,7 +11,7 @@
       "fieldname": "article",
       "fieldtype": "Link",
       "in_list_view": 1,
-      "label": "Article",
+      "label": "Item",
       "options": "Item",
       "reqd": 1
     }

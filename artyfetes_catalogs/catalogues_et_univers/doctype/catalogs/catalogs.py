@@ -29,7 +29,7 @@ class Catalogs(NestedSet):
 	pass
 
 	def validate(self):
-		if self.type == "Catalogue":
+		if self.type == "Catalog":
 			self.is_group = 1
 		else:
 			self.is_group = 0

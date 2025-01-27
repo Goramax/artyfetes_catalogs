@@ -29,7 +29,7 @@
    "fieldname": "title",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Titre",
+   "label": "Title",
    "no_copy": 1,
    "reqd": 1,
    "unique": 1
@@ -38,24 +38,24 @@
    "default": "0",
    "fieldname": "isactive",
    "fieldtype": "Check",
-   "label": "Actif",
+   "label": "Active",
    "no_copy": 1
   },
   {
    "default": "0",
    "fieldname": "isvisible",
    "fieldtype": "Check",
-   "label": "Visible sur le site",
+   "label": "Displayed on website",
    "no_copy": 1
   },
   {
-   "depends_on": "eval:doc.type==\"Univers\";",
+   "depends_on": "eval:doc.type==\"Universe\";",
    "fieldname": "parent_catalogs",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
-   "label": "Catalogue de l'univers",
-   "link_filters": "[[\"Catalogs\",\"type\",\"=\",\"Catalogue\"]]",
-   "mandatory_depends_on": "eval:doc.type==\"Univers\";",
+   "label": "Universes's catalogs",
+   "link_filters": "[[\"Catalogs\",\"type\",\"=\",\"Catalog\"]]",
+   "mandatory_depends_on": "eval:doc.type==\"Universe\";",
    "options": "Catalogs"
   },
   {
@@ -92,30 +92,30 @@
    "fieldname": "options_avanc\u00e9es_section",
    "fieldtype": "Section Break",
    "hidden": 1,
-   "label": "Options avanc\u00e9es"
+   "label": "Advanced Options"
   },
   {
-   "depends_on": "eval:doc.type==\"Univers\";",
+   "depends_on": "eval:doc.type==\"Universe\";",
    "fieldname": "products",
    "fieldtype": "Table",
-   "label": "Produits li\u00e9s",
+   "label": "Linked Items",
    "options": "Linked Articles"
   },
   {
    "default": "Aucun univers \u00e0 afficher",
-   "depends_on": "eval:doc.type==\"Catalogue\";",
+   "depends_on": "eval:doc.type==\"Catalog\";",
    "fieldname": "catalog_universes",
    "fieldtype": "HTML",
-   "label": "Liste des univers du catalogue",
+   "label": "List of catalog's universes",
    "options": "<ul id=\"catalog_universes_list\">\n</ul>",
    "read_only": 1
   },
   {
-   "default": "Catalogue",
+   "default": "Catalog",
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
-   "options": "Catalogue\nUnivers",
+   "options": "Catalog\nUniverse",
    "reqd": 1
   }
  ],
