@@ -1,13 +1,16 @@
-body{
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    position: relative;
+body {
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	position: relative;
 
-    #app{
-        min-height: 100vh;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
+	#app {
+		min-height: 100vh;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
+	.max-w-lg {
+		max-width: 80% !important;
+	}
 }

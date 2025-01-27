@@ -8,7 +8,7 @@ import { ref } from 'vue'
 import { Dialog } from 'frappe-ui'
 import { createResource } from 'frappe-ui'
 import { session } from '../data/session'
-import CatalogList from '../components/CatalogList.vue'
+import CatalogList from '../components/listings/CatalogList.vue'
 
 // const ping = createResource({
 //   url: 'ping',

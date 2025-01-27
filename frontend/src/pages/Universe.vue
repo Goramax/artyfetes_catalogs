@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import ItemList from '../components/ItemList.vue'
+import ItemList from '../components/listings/ItemList.vue'
 import { useRoute } from 'vue-router'
 
 const $route = useRoute()

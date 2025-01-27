@@ -38,31 +38,37 @@ def get_items_of_universe(universe_name, catalog_name):
     return items
 
 
-@frappe.whitelist(allow_guest=True) # Allow guest to access this function without authentication (from postman)
-def get_active_catalogs(linked_item = None, is_active = 1):
+@frappe.whitelist(allow_guest=True)
+def get_active_catalogs(linked_item=None, is_active=1, only_visible=1):
     """Get all active catalogs that are visible and have a parent catalog.
 
     Args:
         linked_item (string, optional): Defaults to None. Id of the item to get catalogs for.
         is_active (int, optional): Defaults to 1. 1 for active catalogs, 0 for inactive catalogs.
+        only_visible (int, optional): Defaults to 1. 1 to include only visible catalogs, 0 to include all.
 
     Returns:
         dict: Dictionary of catalogs grouped by parent catalog.
     """
-    
+    filters = {
+        "isactive": is_active,
+        "parent_catalogs": ["!=", ""],
+    }
+
+    # Add the visibility filter if only_visible is set to 1
+    if only_visible:
+        filters["isvisible"] = 1
+
     if linked_item is None:
+        # Fetch catalogs directly using filters
         catalogs = frappe.db.get_all(
             "Catalogs",
-            filters={
-                "isactive": is_active,
-                "parent_catalogs": ["!=", ""],
-            },
+            filters=filters,
             fields=["name", "title", "isvisible", "isactive", "parent_catalogs"],
         )
     else:
-        
-        catalogs = frappe.db.sql(
-            """
+        # Use an SQL query with linked_item and visibility conditionally
+        query = """
             SELECT
                 catalog.title, catalog.isvisible, catalog.isactive, catalog.parent_catalogs
             FROM
@@ -77,18 +83,19 @@ def get_active_catalogs(linked_item = None, is_active = 1):
                 catalog.parent_catalogs != ""
             AND
                 l_articles.article = %s
-            """,
-            (is_active, linked_item),
-            as_dict=True,
-        )
-    # regroup catalogs by parent
+        """
+        if only_visible:
+            query += " AND catalog.isvisible = 1"
+
+        catalogs = frappe.db.sql(query, (is_active, linked_item), as_dict=True)
+
+    # Regroup catalogs by parent
     catalogs_dict = {}
     for catalog in catalogs:
         if catalog.parent_catalogs not in catalogs_dict:
             catalogs_dict[catalog.parent_catalogs] = []
         catalogs_dict[catalog.parent_catalogs].append(catalog)
-                
-                
+
     return catalogs_dict
 
 

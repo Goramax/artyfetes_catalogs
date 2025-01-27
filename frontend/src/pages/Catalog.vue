@@ -5,7 +5,7 @@
 
 <script setup>
 import { createResource } from 'frappe-ui'
-import UniverseList from '../components/UniverseList.vue'
+import UniverseList from '../components/listings/UniverseList.vue'
 import { useRoute } from 'vue-router'
 
 const $route = useRoute()

@@ -26,7 +26,7 @@ const routes = [
 ]
 
 let router = createRouter({
-  history: createWebHistory('/'),
+  history: createWebHistory('/frontend'),
   routes,
 })
 
