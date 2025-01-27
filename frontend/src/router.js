@@ -15,36 +15,19 @@ const routes = [
   },
   {
     name: 'Universe',
-    path: '/catalogue/:catalogid/universe/:universeid',
+    path: '/catalogue/:catalogid/univers/:universeid',
     component: () => import('@/pages/Universe.vue'),
   },
   {
-    name: 'Item',
-    path: '/catalogue/:catalogid/universe/:universeid/item/:itemid',
-    component: () => import('@/pages/Item.vue'),
+    name: 'Login',
+    path: '/connexion',
+    component: () => import('@/pages/Login.vue'),
   },
 ]
 
 let router = createRouter({
   history: createWebHistory('/frontend'),
   routes,
-})
-
-router.beforeEach(async (to, from, next) => {
-  let isLoggedIn = session.isLoggedIn
-  try {
-    await userResource.promise
-  } catch (error) {
-    isLoggedIn = false
-  }
-
-  if (to.name === 'Login' && isLoggedIn) {
-    next({ name: 'Home' })
-  } else if (to.name !== 'Login' && !isLoggedIn) {
-    next({ name: 'Login' })
-  } else {
-    next()
-  }
 })
 
 export default router

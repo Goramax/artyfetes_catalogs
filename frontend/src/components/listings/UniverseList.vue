@@ -14,7 +14,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { createListResource } from 'frappe-ui'
+import { createResource } from 'frappe-ui'
 
 const props = defineProps({
     catalogid: String,
@@ -22,10 +22,10 @@ const props = defineProps({
 
 const parent_catalog = ref(props.catalogid)
 
-const universes = createListResource({
-    doctype: 'Catalog',
-    fields: ['title', 'name'],
-    filters: [["isactive", "=", 1],["isvisible","=",1],["type","=","Universe"], ["parent_catalogs","=",parent_catalog.value]],
-    })
+const universes = createResource({
+    method: 'GET',
+    url: 'artyfetes_catalogs.api.get_catalogs',
+    params: { isactive: 1, isvisible: 1, type: 'Universe', parent_catalog: parent_catalog.value },
+})
 universes.fetch()
 </script>

@@ -12,13 +12,12 @@
 </template>
 
 <script setup>
-import { createListResource } from 'frappe-ui'
+import { createResource } from 'frappe-ui'
 
-const catalogs = createListResource({
-    doctype: 'Catalog',
-    fields: ['title', 'name'],
-    filters: [["isactive", "=", 1],["isvisible","=",1],["type","=","Catalog"]],
-    auto: true,
-    })
+const catalogs = createResource({
+    method: 'GET',
+    url: 'artyfetes_catalogs.api.get_catalogs',
+    params: { isactive: 1, isvisible: 1, type: 'Catalog' },
+})
 catalogs.fetch()
 </script>
