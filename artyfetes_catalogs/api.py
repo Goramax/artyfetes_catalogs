@@ -19,11 +19,11 @@ def get_items_of_universe(universe_name, catalog_name):
         FROM
             `tabItem` item
         LEFT JOIN
-            `tabLinked Articles` l_articles
+            `tabLinked Article` l_articles
             ON
                 item.name = l_articles.article
         LEFT JOIN
-            `tabCatalogs` catalog
+            `tabCatalog` catalog
             ON
                 l_articles.parent = catalog.name
         WHERE
@@ -72,9 +72,9 @@ def get_active_catalogs(linked_item=None, is_active=1, only_visible=1):
             SELECT
                 catalog.title, catalog.isvisible, catalog.isactive, catalog.parent_catalogs
             FROM
-                `tabCatalogs` catalog
+                `tabCatalog` catalog
             LEFT JOIN
-                `tabLinked Articles` l_articles
+                `tabLinked Article` l_articles
             ON
                 catalog.name = l_articles.parent
             WHERE
@@ -111,7 +111,7 @@ def get_catalog_universes(catalog_name):
     """
     
     universes = frappe.db.get_all(
-        "Catalogs",
+        "Catalog",
         filters={"parent_catalogs": catalog_name, "type": "Universe"},
         fields=["title", "isvisible", "isactive"],
     )

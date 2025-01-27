@@ -5,7 +5,7 @@
             class="card border-2 border-gray-200 rounded-lg flex overflow-hidden flex-col cursor-pointer hover:shadow-lg transition duration-300 ease-in-out hover:transform hover:scale-105"
             @click="openDialog(item)">
             <div class="card-image w-full aspect-square">
-                <img :src="item.image" :alt="item.name" class="w-full h-full object-cover" />
+                <img :src="item.image || Placeholder" :alt="item.name" class="w-full h-full object-cover" />
             </div>
             <div class="card-name p-4 bg-primary text-secondary text-center font-bold">{{ item.name }}</div>
         </div>

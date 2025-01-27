@@ -5,7 +5,7 @@ import frappe
 from frappe.utils.nestedset import NestedSet
 
 
-class Catalogs(NestedSet):
+class Catalog(NestedSet):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -21,7 +21,7 @@ class Catalogs(NestedSet):
 		isvisible: DF.Check
 		lft: DF.Int
 		old_parent: DF.Link | None
-		parent_catalogs: DF.Link | None
+		parent_catalog: DF.Link | None
 		products: DF.Table[SalesOrderItem]
 		rgt: DF.Int
 		title: DF.Data
@@ -42,14 +42,14 @@ def get_active_tree_nodes(doctype, parent=None, is_root=False):
     """
     filters = {"isactive": 1}
     if parent: 
-        filters["parent_catalogs"] = parent
+        filters["parent_catalog"] = parent
     else:
-        filters["parent_catalogs"] = ""
+        filters["parent_catalog"] = ""
 
     nodes = frappe.get_all(
         doctype,
         filters=filters,
-        fields=["name", "title", "is_group", "parent_catalogs", "creation"],
+        fields=["name", "title", "is_group", "parent_catalog", "creation"],
         order_by="creation DESC",
     )
 

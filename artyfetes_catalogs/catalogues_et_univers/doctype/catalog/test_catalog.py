@@ -12,18 +12,18 @@ EXTRA_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
 
-class UnitTestCatalogs(UnitTestCase):
+class UnitTestCatalog(UnitTestCase):
 	"""
-	Unit tests for Catalogs.
+	Unit tests for Catalog.
 	Use this class for testing individual functions and methods.
 	"""
 
 	pass
 
 
-class IntegrationTestCatalogs(IntegrationTestCase):
+class IntegrationTestCatalog(IntegrationTestCase):
 	"""
-	Integration tests for Catalogs.
+	Integration tests for Catalog.
 	Use this class for testing interactions between multiple components.
 	"""
 

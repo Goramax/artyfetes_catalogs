@@ -8,7 +8,7 @@ app_license = "mit"
 
 doctype_js = {
     "Item": "public/js/item.js",
-    "Catalogs": "public/js/catalogs.js",
+    "Catalog": "public/js/catalogs.js",
 }
 
 # Apps

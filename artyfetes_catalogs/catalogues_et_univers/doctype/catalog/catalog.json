@@ -53,10 +53,10 @@
    "fieldname": "parent_catalogs",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
-   "label": "Universes's catalogs",
+   "label": "Universes's catalog",
    "link_filters": "[[\"Catalogs\",\"type\",\"=\",\"Catalog\"]]",
    "mandatory_depends_on": "eval:doc.type==\"Universe\";",
-   "options": "Catalogs"
+   "options": "Catalog"
   },
   {
    "fieldname": "lft",
@@ -85,7 +85,7 @@
    "fieldtype": "Link",
    "hidden": 1,
    "label": "Old Parent",
-   "options": "Catalogs"
+   "options": "Catalog"
   },
   {
    "collapsible": 1,
@@ -99,7 +99,7 @@
    "fieldname": "products",
    "fieldtype": "Table",
    "label": "Linked Items",
-   "options": "Linked Articles"
+   "options": "Linked Article"
   },
   {
    "default": "Aucun univers \u00e0 afficher",
@@ -122,10 +122,10 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-01-26 11:48:41.974085",
+ "modified": "2025-01-27 15:19:00.075878",
  "modified_by": "Administrator",
  "module": "Catalogues et Univers",
- "name": "Catalogs",
+ "name": "Catalog",
  "naming_rule": "By fieldname",
  "nsm_parent_field": "parent_catalogs",
  "owner": "Administrator",

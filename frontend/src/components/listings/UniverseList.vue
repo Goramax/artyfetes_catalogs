@@ -23,7 +23,7 @@ const props = defineProps({
 const parent_catalog = ref(props.catalogid)
 
 const universes = createListResource({
-    doctype: 'Catalogs',
+    doctype: 'Catalog',
     fields: ['title', 'name'],
     filters: [["isactive", "=", 1],["isvisible","=",1],["type","=","Universe"], ["parent_catalogs","=",parent_catalog.value]],
     })

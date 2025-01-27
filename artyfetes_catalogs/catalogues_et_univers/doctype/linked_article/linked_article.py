@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class LinkedArticles(Document):
+class LinkedArticle(Document):
 	pass
