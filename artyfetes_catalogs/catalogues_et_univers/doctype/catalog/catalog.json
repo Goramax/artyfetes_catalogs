@@ -11,7 +11,7 @@
   "type",
   "isactive",
   "isvisible",
-  "parent_catalogs",
+  "parent_catalog",
   "catalog_universes",
   "products",
   "options_avanc\u00e9es_section",
@@ -50,7 +50,7 @@
   },
   {
    "depends_on": "eval:doc.type==\"Universe\";",
-   "fieldname": "parent_catalogs",
+   "fieldname": "parent_catalog",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
    "label": "Universes's catalog",
@@ -127,7 +127,7 @@
  "module": "Catalogues et Univers",
  "name": "Catalog",
  "naming_rule": "By fieldname",
- "nsm_parent_field": "parent_catalogs",
+ "nsm_parent_field": "parent_catalog",
  "owner": "Administrator",
  "permissions": [
   {

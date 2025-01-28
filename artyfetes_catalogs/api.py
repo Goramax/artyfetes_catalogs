@@ -27,7 +27,7 @@ def get_items_of_universe(universe_name, catalog_name):
             ON
                 l_articles.parent = catalog.name
         WHERE
-            l_articles.parent = %s AND catalog.parent_catalogs = %s 
+            l_articles.parent = %s AND catalog.parent_catalog = %s 
                 AND item.disabled = 0  AND catalog.isactive = 1
                 AND catalog.isvisible = 1
             """,
@@ -37,7 +37,28 @@ def get_items_of_universe(universe_name, catalog_name):
     
     return items
 
+@frappe.whitelist(allow_guest=True)
+def get_catalogs(isactive=1, isvisible=1,type='Catalog', parent_catalog=''):
+    """Get all catalogs.
 
+    Args:
+        isactive (int, optional): Defaults to 1. 1 for active catalogs, 0 for inactive catalogs.
+        isvisible (int, optional): Defaults to 1. 1 to include only visible catalogs, 0 to include all.
+        type (string, optional): Defaults to 'Catalog'. Type of catalog to get.
+
+    Returns:
+        list: List of catalogs.
+    """
+    
+    catalogs = frappe.db.get_all(
+        "Catalog",
+        filters={"isactive": isactive, "isvisible": isvisible, "type": type, "parent_catalog": parent_catalog},
+        fields=["name", "title", "isvisible", "isactive", "parent_catalog"],
+    )
+    
+    return catalogs
+
+# get all active catalogs that are visible and have a parent catalog
 @frappe.whitelist(allow_guest=True)
 def get_active_catalogs(linked_item=None, is_active=1, only_visible=1):
     """Get all active catalogs that are visible and have a parent catalog.
@@ -52,7 +73,7 @@ def get_active_catalogs(linked_item=None, is_active=1, only_visible=1):
     """
     filters = {
         "isactive": is_active,
-        "parent_catalogs": ["!=", ""],
+        "parent_catalog": ["!=", ""],
     }
 
     # Add the visibility filter if only_visible is set to 1
@@ -64,13 +85,13 @@ def get_active_catalogs(linked_item=None, is_active=1, only_visible=1):
         catalogs = frappe.db.get_all(
             "Catalogs",
             filters=filters,
-            fields=["name", "title", "isvisible", "isactive", "parent_catalogs"],
+            fields=["name", "title", "isvisible", "isactive", "parent_catalog"],
         )
     else:
         # Use an SQL query with linked_item and visibility conditionally
         query = """
             SELECT
-                catalog.title, catalog.isvisible, catalog.isactive, catalog.parent_catalogs
+                catalog.title, catalog.isvisible, catalog.isactive, catalog.parent_catalog
             FROM
                 `tabCatalog` catalog
             LEFT JOIN
@@ -80,7 +101,7 @@ def get_active_catalogs(linked_item=None, is_active=1, only_visible=1):
             WHERE
                 catalog.isactive = %s
             AND
-                catalog.parent_catalogs != ""
+                catalog.parent_catalog != ""
             AND
                 l_articles.article = %s
         """
@@ -92,9 +113,9 @@ def get_active_catalogs(linked_item=None, is_active=1, only_visible=1):
     # Regroup catalogs by parent
     catalogs_dict = {}
     for catalog in catalogs:
-        if catalog.parent_catalogs not in catalogs_dict:
-            catalogs_dict[catalog.parent_catalogs] = []
-        catalogs_dict[catalog.parent_catalogs].append(catalog)
+        if catalog.parent_catalog not in catalogs_dict:
+            catalogs_dict[catalog.parent_catalog] = []
+        catalogs_dict[catalog.parent_catalog].append(catalog)
 
     return catalogs_dict
 
@@ -112,7 +133,7 @@ def get_catalog_universes(catalog_name):
     
     universes = frappe.db.get_all(
         "Catalog",
-        filters={"parent_catalogs": catalog_name, "type": "Universe"},
+        filters={"parent_catalog": catalog_name, "type": "Universe"},
         fields=["title", "isvisible", "isactive"],
     )
     
